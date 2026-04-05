@@ -147,7 +147,7 @@ footer{background:#06090f;padding:48px 60px;display:flex;justify-content:space-b
 .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
 .reveal.visible{opacity:1;transform:translateY(0)}
 @media(max-width:900px){nav{padding:20px 24px}.nav-links{display:none}.hero-content{padding:100px 24px 0}.hero-stats{display:none}h1{font-size:3rem}.section-inner{padding:0 24px}.flip-cards-row{grid-template-columns:1fr}.flip-card{height:auto;perspective:none}.flip-card-inner{transform-style:flat;height:auto;position:static}.flip-card:hover .flip-card-inner{transform:none}.flip-front{display:none}.flip-back{position:static;transform:none;backface-visibility:visible;-webkit-backface-visibility:visible}.about-grid,.contact-layout{grid-template-columns:1fr;gap:60px}.founders-grid{grid-template-columns:1fr}.services-columns{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr 1fr}.process-steps::before{display:none}.form-row{grid-template-columns:1fr}.philosophy-inner{grid-template-columns:1fr;gap:24px}footer{flex-direction:column;gap:24px;text-align:center}.footer-links{flex-wrap:wrap;justify-content:center}}
-</style>
+html,body{width:100%;min-height:100vh;margin:0;padding:0;overflow-x:hidden}</style>
 </head>
 <body>
 <nav>
@@ -398,5 +398,11 @@ var observer=new IntersectionObserver(function(entries){
 },{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
 </script>
-</body>
+<script>
+function sendHeight(){var h=document.documentElement.scrollHeight;window.parent.postMessage({type:'setHeight',height:h},'*')}
+window.addEventListener('load',sendHeight);
+window.addEventListener('resize',sendHeight);
+setTimeout(sendHeight,500);
+setTimeout(sendHeight,1500);
+</script></body>
 </html>
