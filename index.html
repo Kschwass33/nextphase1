@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NextPhase Mental Performance Coaching</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0a0f1e;--deep:#111827;--gold:#c9a84c;--gold-light:#e8c97a;--cream:#faf8f3;--white:#ffffff;--gray:#6b7280}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:24px 60px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,15,30,0.93);backdrop-filter:blur(12px);border-bottom:1px solid rgba(201,168,76,0.15)}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:600;color:var(--white);letter-spacing:.04em;text-decoration:none}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:40px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{border:1px solid var(--gold);color:var(--gold)!important;padding:10px 24px;border-radius:2px;transition:all .3s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy)!important}
+#home{min-height:100vh;background:var(--navy);position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(201,168,76,.07) 0%,transparent 70%),radial-gradient(ellipse 50% 80% at 20% 80%,rgba(201,168,76,.05) 0%,transparent 60%),linear-gradient(135deg,#0a0f1e 0%,#111827 100%)}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.04) 1px,transparent 1px);background-size:80px 80px}
+.hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:100px 60px 0}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--gold);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin-bottom:28px;opacity:0;animation:fadeUp .8s ease .2s forwards}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold)}
+h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3.2rem,7vw,6rem);font-weight:300;color:var(--white);line-height:1.05;margin-bottom:32px;opacity:0;animation:fadeUp .9s ease .4s forwards}
+h1 em{font-style:italic;color:var(--gold)}
+.hero-sub{font-size:1.05rem;color:rgba(255,255,255,.6);max-width:540px;line-height:1.75;margin-bottom:48px;font-weight:300;opacity:0;animation:fadeUp .9s ease .6s forwards}
+.hero-actions{display:flex;gap:20px;align-items:center;opacity:0;animation:fadeUp .9s ease .8s forwards}
+.btn-primary{background:var(--gold);color:var(--navy);padding:16px 40px;border:none;border-radius:2px;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none;display:inline-block;transition:all .3s}
+.btn-primary:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 12px 40px rgba(201,168,76,.3)}
+.btn-ghost{color:rgba(255,255,255,.7);font-size:.85rem;letter-spacing:.08em;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:color .3s}
+.btn-ghost:hover{color:var(--gold)}
+.btn-ghost::after{content:'→';transition:transform .3s}
+.btn-ghost:hover::after{transform:translateX(4px)}
+.hero-stats{position:absolute;bottom:60px;right:60px;display:flex;gap:60px;opacity:0;animation:fadeUp .9s ease 1s forwards}
+.stat{text-align:right}
+.stat-number{font-family:'Cormorant Garamond',serif;font-size:2.4rem;font-weight:300;color:var(--gold);display:block}
+.stat-label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.section-inner{max-width:1200px;margin:0 auto;padding:0 60px}
+.section-eyebrow{display:inline-flex;align-items:center;gap:12px;color:var(--gold);font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;margin-bottom:20px}
+.section-eyebrow::before{content:'';width:30px;height:1px;background:var(--gold)}
+h2{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;line-height:1.15;color:var(--navy);margin-bottom:24px}
+h2 em{font-style:italic;color:var(--gold)}
+.marquee-bar{background:var(--navy);padding:18px 0;overflow:hidden;white-space:nowrap}
+.marquee-track{display:inline-block;animation:marquee 22s linear infinite}
+.marquee-track span{display:inline-block;color:rgba(201,168,76,.5);font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;padding:0 48px}
+.marquee-track span.accent{color:var(--gold)}
+.flip-section{background:var(--deep);padding:100px 0}
+.flip-intro{text-align:center;margin-bottom:64px}
+.flip-intro h2{color:var(--white);margin-bottom:16px}
+.flip-intro p{font-size:1rem;color:rgba(255,255,255,.45);max-width:500px;margin:0 auto;line-height:1.8;font-weight:300}
+.flip-intro .section-eyebrow{justify-content:center}
+.flip-cards-row{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.flip-card{height:440px;perspective:1200px;cursor:pointer;overflow:visible}
+.flip-card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .75s cubic-bezier(.4,.2,.2,1);overflow:visible}
+.flip-card.flipped .flip-card-inner{transform:rotateY(180deg)}
+.flip-front,.flip-back{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:4px;overflow:hidden;border:1px solid rgba(201,168,76,.12)}
+.flip-front{background:var(--navy);display:flex;flex-direction:column;justify-content:flex-end;padding:48px}
+.flip-glow-athlete{position:absolute;inset:0;background:radial-gradient(ellipse 90% 60% at 85% 20%,rgba(201,168,76,.13) 0%,transparent 65%),radial-gradient(ellipse 60% 80% at 10% 90%,rgba(201,168,76,.06) 0%,transparent 60%)}
+.flip-glow-corp{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 15% 20%,rgba(201,168,76,.13) 0%,transparent 65%),radial-gradient(ellipse 60% 70% at 90% 85%,rgba(201,168,76,.06) 0%,transparent 60%)}
+.flip-front-content{position:relative;z-index:2}
+.flip-icon{font-size:2.2rem;margin-bottom:18px;display:block}
+.flip-front h3{font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:300;color:var(--white);line-height:1.15;margin-bottom:12px}
+.flip-front h3 em{font-style:italic;color:var(--gold)}
+.flip-front p{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;font-weight:300;margin-bottom:20px}
+.flip-hint{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(201,168,76,.5);display:flex;align-items:center;gap:8px}
+.flip-hint::after{content:'↻';font-size:.85rem}
+.flip-back{background:var(--gold);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;padding:52px 48px}
+.flip-back-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(10,15,30,.55);margin-bottom:16px;font-weight:500}
+.flip-back h3{font-family:'Cormorant Garamond',serif;font-size:1.65rem;font-weight:400;color:var(--navy);margin-bottom:22px;line-height:1.2}
+.flip-back-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:28px}
+.flip-back-list li{font-size:.88rem;color:rgba(10,15,30,.75);padding-left:18px;position:relative;line-height:1.5}
+.flip-back-list li::before{content:'→';position:absolute;left:0;color:var(--navy);font-size:.78rem}
+.flip-back-cta{display:inline-block;background:var(--navy);color:var(--gold);padding:12px 28px;border-radius:2px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;font-weight:500;transition:background .3s;align-self:flex-start;cursor:pointer;position:relative;z-index:10;pointer-events:all}
+.flip-back-cta:hover{background:#0f1628}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}
+.about-left p{font-size:1rem;color:#374151;line-height:1.85;margin-bottom:20px;font-weight:300}
+.about-left p strong{color:var(--navy);font-weight:500}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.founder-card{background:var(--navy);padding:36px 30px;border-radius:4px;position:relative;overflow:hidden;transition:transform .3s}
+.founder-card:hover{transform:translateY(-4px)}
+.founder-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold-light))}
+.founder-icon{width:48px;height:48px;background:rgba(201,168,76,.12);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.2rem}
+.founder-card h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--white);margin-bottom:6px}
+.founder-card .role{font-size:.72rem;color:var(--gold);letter-spacing:.15em;text-transform:uppercase;margin-bottom:16px}
+.founder-card p{font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.7;font-weight:300}
+.values-row{display:flex;gap:12px;margin-top:36px;flex-wrap:wrap}
+.value-pill{background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.25);color:var(--gold);padding:8px 18px;border-radius:100px;font-size:.78rem;letter-spacing:.08em}
+.services-intro{font-size:1rem;color:rgba(255,255,255,.5);max-width:620px;line-height:1.8;margin-bottom:16px;font-weight:300}
+.pillars-note{font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(201,168,76,.6);margin-bottom:60px;display:flex;align-items:center;gap:10px}
+.pillars-note::before{content:'';width:24px;height:1px;background:rgba(201,168,76,.4)}
+.services-columns{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.services-col-header{padding:28px 36px;border:1px solid rgba(201,168,76,.15);margin-bottom:2px;display:flex;align-items:center;gap:16px}
+.services-col-header.athlete{background:rgba(201,168,76,.07);border-color:rgba(201,168,76,.25)}
+.services-col-header.corporate{background:rgba(255,255,255,.03)}
+.col-icon{font-size:1.4rem}
+.col-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--white)}
+.col-subtitle{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:3px;letter-spacing:.05em}
+.svc{border:1px solid rgba(201,168,76,.08);border-top:none;background:rgba(255,255,255,.02);overflow:hidden}
+.svc-trigger{width:100%;padding:22px 36px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:none;border:none;text-align:left;transition:background .3s}
+.svc-trigger:hover{background:rgba(201,168,76,.04)}
+.svc-trigger h4{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--white)}
+.svc-arrow{width:26px;height:26px;flex-shrink:0;border:1px solid rgba(201,168,76,.25);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:.8rem;transition:all .35s}
+.svc.open .svc-arrow{transform:rotate(45deg);background:rgba(201,168,76,.12)}
+.svc-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+.svc.open .svc-body{max-height:500px}
+.svc-body-inner{padding:4px 36px 28px}
+.svc-body-inner p{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.75;font-weight:300;margin-bottom:16px}
+.svc-features{list-style:none;display:flex;flex-direction:column;gap:9px}
+.svc-features li{font-size:.82rem;color:rgba(201,168,76,.75);padding-left:16px;position:relative;font-weight:300}
+.svc-features li::before{content:'—';position:absolute;left:0;color:var(--gold)}
+.philosophy-band{background:var(--gold);padding:80px 60px}
+.philosophy-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:center}
+.philosophy-left{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--navy)}
+.philosophy-right{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);font-weight:300;font-style:italic;color:var(--navy);line-height:1.5}
+.process-steps{margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:40px;position:relative}
+.process-steps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.process-step{text-align:center;padding-top:20px}
+.step-circle{width:56px;height:56px;background:var(--navy);border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--gold);position:relative;z-index:1}
+.process-step h4{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:400;color:var(--navy);margin-bottom:12px}
+.process-step p{font-size:.88rem;color:var(--gray);line-height:1.7;font-weight:300}
+.contact-layout{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start}
+.contact-left p{font-size:1rem;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:40px;font-weight:300}
+.contact-details{display:flex;flex-direction:column;gap:20px}
+.contact-item{display:flex;align-items:center;gap:16px;color:rgba(255,255,255,.6);font-size:.9rem}
+.contact-item .icon{width:40px;height:40px;background:rgba(201,168,76,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+.contact-form{display:flex;flex-direction:column;gap:20px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.form-group{display:flex;flex-direction:column;gap:8px}
+.form-group label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.form-group input,.form-group select,.form-group textarea{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.15);border-radius:2px;padding:14px 18px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:300;outline:none;transition:border-color .3s}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(201,168,76,.5)}
+.form-group select option{background:var(--navy)}
+.form-group textarea{resize:none}
+footer{background:#06090f;padding:48px 60px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(201,168,76,.1)}
+.footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--white);font-weight:400}
+.footer-logo span{color:var(--gold)}
+.footer-tagline{font-size:.8rem;color:rgba(255,255,255,.3);letter-spacing:.08em;margin-top:4px}
+.footer-links{display:flex;gap:32px;list-style:none}
+.footer-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;transition:color .3s}
+.footer-links a:hover{color:var(--gold)}
+.footer-copy{font-size:.78rem;color:rgba(255,255,255,.2)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:900px){nav{padding:20px 24px}.nav-links{display:none}.hero-content{padding:100px 24px 0}.hero-stats{display:none}h1{font-size:3rem}.section-inner{padding:0 24px}.flip-cards-row{grid-template-columns:1fr}.flip-card{height:auto;perspective:none}.flip-card-inner{transform-style:flat;height:auto;position:static}.flip-card:hover .flip-card-inner{transform:none}.flip-front{display:none}.flip-back{position:static;transform:none;backface-visibility:visible;-webkit-backface-visibility:visible}.about-grid,.contact-layout{grid-template-columns:1fr;gap:60px}.founders-grid{grid-template-columns:1fr}.services-columns{grid-template-columns:1fr}.process-steps{grid-template-columns:1fr 1fr}.process-steps::before{display:none}.form-row{grid-template-columns:1fr}.philosophy-inner{grid-template-columns:1fr;gap:24px}footer{flex-direction:column;gap:24px;text-align:center}.footer-links{flex-wrap:wrap;justify-content:center}}
+html,body{width:100%;min-height:100vh;margin:0;padding:0;overflow-x:hidden}</style>
+</head>
+<body>
+<nav>
+  <a href="#home" class="logo">Next<span>Phase</span></a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact" class="nav-cta">Work With Us</a></li>
+  </ul>
+</nav>
+
+<div id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Mental Performance Coaching</div>
+    <h1>Your mind is your<br><em>greatest competitive</em><br>advantage.</h1>
+    <p class="hero-sub">NextPhase bridges elite sport psychology and executive performance coaching — helping athletes and professionals unlock the mental edge that separates good from extraordinary.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start Your Journey</a>
+      <a href="#services" class="btn-ghost">Explore Our Programs</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-number">1:1</span><span class="stat-label">Personalized Coaching</span></div>
+    <div class="stat"><span class="stat-number">2</span><span class="stat-label">Disciplines. One Team.</span></div>
+    <div class="stat"><span class="stat-number">∞</span><span class="stat-label">Potential Unlocked</span></div>
+  </div>
+</div>
+
+<div class="marquee-bar">
+  <div class="marquee-track">
+    <span class="accent">Mental Performance</span><span>·</span><span>Athletic Excellence</span><span>·</span><span class="accent">Executive Mindset</span><span>·</span><span>Resilience Training</span><span>·</span><span class="accent">Clarity Under Pressure</span><span>·</span><span>Peak Performance</span><span>·</span><span class="accent">Mental Performance</span><span>·</span><span>Athletic Excellence</span><span>·</span><span class="accent">Executive Mindset</span><span>·</span><span>Resilience Training</span><span>·</span><span class="accent">Clarity Under Pressure</span><span>·</span><span>Peak Performance</span><span>·</span>
+  </div>
+</div>
+
+<div class="flip-section">
+  <div class="section-inner">
+    <div class="flip-intro reveal">
+      <div class="section-eyebrow">Who We Work With</div>
+      <h2>Built for <em>both arenas.</em></h2>
+      <p>Whether you compete on the court or in the conference room, the mental game is the same. Hover each card to see what NextPhase looks like for you.</p>
+    </div>
+    <div class="flip-cards-row reveal" style="transition-delay:.2s">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-glow-athlete"></div>
+            <div class="flip-front-content">
+              <span class="flip-icon">🏅</span>
+              <h3>For <em>Athletes</em></h3>
+              <p>You've put in the physical work. NextPhase helps you train the part of performance most coaches never touch — what happens in your head.</p>
+              <div class="flip-hint">Click to explore</div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-label">Athlete Programs</div>
+            <h3>Compete with clarity, confidence &amp; composure.</h3>
+            <ul class="flip-back-list">
+              <li>Pre-game mental routines &amp; focus training</li>
+              <li>Managing anxiety in high-pressure moments</li>
+              <li>Rebuilding confidence after setbacks</li>
+              <li>Resilient, growth-oriented mindset</li>
+              <li>Leadership development &amp; mentorship pathway</li>
+            </ul>
+            <a class="flip-back-cta" onclick="event.stopPropagation();document.getElementById('services').scrollIntoView({behavior:'smooth'})">See All Programs →</a>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-glow-corp"></div>
+            <div class="flip-front-content">
+              <span class="flip-icon">📈</span>
+              <h3>For <em>Business Leaders</em></h3>
+              <p>The higher you climb, the more your performance depends on mental clarity — not just skill. NextPhase helps leaders stay sharp, focused, and grounded.</p>
+              <div class="flip-hint">Click to explore</div>
+            </div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-label">Corporate Programs</div>
+            <h3>Lead with presence, poise &amp; purpose.</h3>
+            <ul class="flip-back-list">
+              <li>Decision-making and focus under pressure</li>
+              <li>Stress management &amp; burnout prevention</li>
+              <li>Executive presence &amp; authentic leadership</li>
+              <li>High-trust, high-performance team building</li>
+              <li>Ongoing mentorship retainer available</li>
+            </ul>
+            <a class="flip-back-cta" onclick="event.stopPropagation();document.getElementById('services').scrollIntoView({behavior:'smooth'})">See All Programs →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="about" style="background:var(--cream);padding:120px 0">
+<div class="section-inner">
+  <div class="about-grid">
+    <div class="about-left reveal">
+      <div class="section-eyebrow">Our Story</div>
+      <h2>Where the boardroom meets<br>the <em>court.</em></h2>
+      <p>NextPhase was built on a belief we've both lived: the mental skills that move the needle at the senior levels of business are the same ones that separate good athletes from great ones. <strong>Confidence, composure, focus under fire — they're not personality traits. They're trainable.</strong></p>
+      <p>We're a husband-and-wife team. Between us, we've navigated corporate boardrooms, high-stakes performance environments, and therapy rooms. We understand pressure from every angle — and we know how to help people use it.</p>
+      <p>NextPhase exists to close the gap between where you are and where you're fully capable of going. Not through motivation alone, but through practical, proven mental performance work grounded in real experience.</p>
+      <div class="values-row">
+        <span class="value-pill">Evidence-Based</span>
+        <span class="value-pill">Human-First</span>
+        <span class="value-pill">High-Performance</span>
+        <span class="value-pill">Results-Driven</span>
+      </div>
+    </div>
+    <div class="founders-grid reveal" style="transition-delay:.2s">
+      <div class="founder-card">
+        <div class="founder-icon">💼</div>
+        <h4>The Executive</h4>
+        <div class="role">Senior Corporate Leader</div>
+        <p>With a career built at the senior level of corporate America, he's led high-performing teams, navigated organizational pressure, and operated in environments where mental clarity isn't optional — it's the job. He's also a coach, so he understands the mental game from both sides.</p>
+      </div>
+      <div class="founder-card">
+        <div class="founder-icon">🧠</div>
+        <h4>The Therapist</h4>
+        <div class="role">Licensed Mental Health Therapist</div>
+        <p>A clinical foundation meets a performance mindset. With deep expertise in how the mind processes stress, identity, and growth, she brings the therapeutic lens that turns insight into lasting, measurable change.</p>
+      </div>
+      <div class="founder-card" style="grid-column:1/-1">
+        <div style="display:flex;gap:32px;align-items:flex-start">
+          <div class="founder-icon" style="flex-shrink:0">⚡</div>
+          <div>
+            <h4 style="margin-bottom:8px">Together, We Are NextPhase</h4>
+            <p>Corporate grit meets clinical precision. We don't do cookie-cutter programs or motivational fluff — we bring real-world experience, evidence-based tools, and genuine investment in every client's next level.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="services" style="background:var(--navy);padding:120px 0">
+<div class="section-inner">
+  <div class="reveal">
+    <div class="section-eyebrow">What We Offer</div>
+    <h2 style="color:var(--white)">Programs built for<br><em>serious performers.</em></h2>
+    <p class="services-intro">Every NextPhase program is grounded in our 10 Pillars of Mental Performance — a structured, proven framework adapted to your specific arena, pressures, and goals.</p>
+    <div class="pillars-note">10 Pillars of Mental Performance · Tailored for Athletes &amp; Corporate Leaders</div>
+  </div>
+  <div class="services-columns reveal" style="transition-delay:.2s">
+    <div class="services-col">
+      <div class="services-col-header athlete">
+        <span class="col-icon">🏅</span>
+        <div><div class="col-title">For Athletes</div><div class="col-subtitle">Mental training built for competition</div></div>
+      </div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Mental Performance Coaching</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>The physical work only takes you so far. This program trains the mental skills that show up when the game is on the line — focus, composure, confidence, and consistency.</p><ul class="svc-features"><li>Pre-competition routines &amp; focus training</li><li>Managing anxiety in high-pressure moments</li><li>Confidence &amp; self-talk development</li><li>Resilience through slumps, setbacks &amp; injury</li><li>Process over outcome mindset</li></ul></div></div></div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Leadership Development</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>Great athletes aren't automatically great leaders — leadership is a skill, and we train it. This program prepares athletes to lead their teams and careers with intention and impact.</p><ul class="svc-features"><li>Developing your leadership identity</li><li>Communication &amp; accountability on the team</li><li>Leading through adversity and conflict</li><li>Transitioning from competitor to leader</li><li>Pathway into the NextPhase mentor network</li></ul></div></div></div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Mentorship Program</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>For athletes who've done the work and are ready to give back. This program brings high-performing athletes into an ongoing mentorship relationship — guiding the next generation while continuing their own growth.</p><ul class="svc-features"><li>Formalized mentor training &amp; frameworks</li><li>One-on-one mentorship pairing</li><li>Continued personal development support</li><li>Community within the NextPhase network</li><li>Pathway toward future opportunities</li></ul></div></div></div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Team &amp; Group Programs</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>For coaches and programs looking to build a culture of mental toughness from the inside out. We work with entire teams to create shared language, shared standards, and a collective edge.</p><ul class="svc-features"><li>Team mental performance workshops</li><li>Coaching staff performance sessions</li><li>Culture and cohesion building</li><li>Group resilience &amp; accountability training</li></ul></div></div></div>
+    </div>
+    <div class="services-col">
+      <div class="services-col-header corporate">
+        <span class="col-icon">📈</span>
+        <div><div class="col-title">For Business Leaders</div><div class="col-subtitle">Executive performance for high-stakes environments</div></div>
+      </div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Executive Mental Performance</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>Peak performance in business isn't about working harder — it's about performing smarter under pressure. We bring the same mental frameworks used by elite athletes directly into the boardroom.</p><ul class="svc-features"><li>Focus and decision-making under pressure</li><li>Managing stress before it becomes burnout</li><li>Building consistent high-performance habits</li><li>Mental recovery and sustainable output</li><li>Clarity in high-stakes situations</li></ul></div></div></div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Leadership Training</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>Leadership at the senior level demands more than technical expertise. This program develops the mental and interpersonal skills that define how you show up for your team — especially under pressure.</p><ul class="svc-features"><li>Executive presence &amp; authentic communication</li><li>Leading teams through change and uncertainty</li><li>Psychological safety &amp; team trust building</li><li>Managing up, across, and down effectively</li><li>High-performance culture development</li></ul></div></div></div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Mentorship Retainer</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>For leaders who want more than a program — they want a trusted partner. The mentorship retainer is an ongoing, deeply personalized engagement built around your career, your team, and your long-term goals.</p><ul class="svc-features"><li>Ongoing 1:1 executive mentorship sessions</li><li>Real-time support for high-stakes decisions</li><li>Long-term performance &amp; career strategy</li><li>Priority access and continuous accountability</li><li>Custom engagement built around your needs</li></ul></div></div></div>
+      <div class="svc"><button class="svc-trigger" onclick="toggleSvc(this)"><h4>Team &amp; Organizational Programs</h4><span class="svc-arrow">+</span></button><div class="svc-body"><div class="svc-body-inner"><p>Great companies are built by great teams. We partner with organizations to develop the mental performance culture that drives engagement, retention, and collective excellence.</p><ul class="svc-features"><li>Leadership retreats &amp; team workshops</li><li>Mental performance for management teams</li><li>Organizational resilience programming</li><li>Ongoing group development engagements</li></ul></div></div></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="philosophy-band">
+  <div class="philosophy-inner">
+    <div class="philosophy-left">Our Philosophy</div>
+    <div class="philosophy-right">"The next phase isn't a destination — it's a decision. We help you make it with clarity, confidence, and the mental tools to back it up."</div>
+  </div>
+</div>
+
+<div id="process" style="background:var(--cream);padding:120px 0">
+<div class="section-inner">
+  <div class="reveal">
+    <div class="section-eyebrow">How It Works</div>
+    <h2>Your path to the<br><em>next level.</em></h2>
+  </div>
+  <div class="process-steps reveal" style="transition-delay:.2s">
+    <div class="process-step"><div class="step-circle">01</div><h4>Discovery Call</h4><p>We start with a conversation — no pressure, no pitch. Just us getting to know your goals, your challenges, and where the mental gaps are showing up.</p></div>
+    <div class="process-step"><div class="step-circle">02</div><h4>Performance Assessment</h4><p>We evaluate your current mental performance landscape — strengths, blind spots, and the specific patterns that may be holding you back.</p></div>
+    <div class="process-step"><div class="step-circle">03</div><h4>Custom Program Design</h4><p>Your program is built around your life, not a template. We map a clear, practical plan with measurable milestones along the way.</p></div>
+    <div class="process-step"><div class="step-circle">04</div><h4>Ongoing Coaching</h4><p>Regular sessions, real-time support, and consistent accountability. We're with you through the pressure moments, not just the comfortable ones.</p></div>
+  </div>
+</div>
+</div>
+
+<div id="contact" style="background:var(--navy);padding:120px 0">
+<div class="section-inner">
+  <div class="contact-layout">
+    <div class="contact-left reveal">
+      <div class="section-eyebrow">Get In Touch</div>
+      <h2 style="color:var(--white)">Ready for your<br><em>next phase?</em></h2>
+      <p>Every great performance starts with a single conversation. Tell us a little about where you are and where you want to go — we'll take it from there.</p>
+      <div class="contact-details">
+        <div class="contact-item"><div class="icon">✉</div><span>info@nextphaselab.com</span></div>
+        <div class="contact-item"><div class="icon">📍</div><span>Available in-person &amp; virtually nationwide</span></div>
+        <div class="contact-item"><div class="icon">⚡</div><span>Free 30-minute discovery call</span></div>
+      </div>
+    </div>
+    <div class="contact-form reveal" style="transition-delay:.2s">
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="Your first name"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="Your last name"></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>I am a...</label><select><option value="">Select one</option><option>Athlete (High School)</option><option>Athlete (College)</option><option>Athlete (Professional)</option><option>Corporate Professional</option><option>Executive / Senior Leader</option><option>Coach or Team Staff</option><option>Other</option></select></div>
+      <div class="form-group"><label>What brings you to NextPhase?</label><textarea rows="4" placeholder="Tell us what's on your mind — what you're working toward, what's getting in the way, or simply that you're curious..."></textarea></div>
+      <button class="btn-primary" style="border:none;cursor:pointer;width:100%;padding:18px">Request a Discovery Call →</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<footer>
+  <div>
+    <div class="footer-logo">Next<span>Phase</span></div>
+    <div class="footer-tagline">Mental Performance Coaching · Where Potential Becomes Reality</div>
+  </div>
+  <ul class="footer-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 NextPhase. All rights reserved.</div>
+</footer>
+
+<script>
+function toggleSvc(btn){
+  var card=btn.closest('.svc');
+  var isOpen=card.classList.contains('open');
+  btn.closest('.services-col').querySelectorAll('.svc.open').forEach(function(s){s.classList.remove('open')});
+  if(!isOpen)card.classList.add('open');
+}
+var observer=new IntersectionObserver(function(entries){
+  entries.forEach(function(e){if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+</script>
+<script>
+function sendHeight(){var h=document.documentElement.scrollHeight;window.parent.postMessage({type:'setHeight',height:h},'*')}
+window.addEventListener('load',sendHeight);
+window.addEventListener('resize',sendHeight);
+setTimeout(sendHeight,500);
+setTimeout(sendHeight,1500);
+</script></body>
+</html>
